@@ -9,3 +9,5 @@
 * 打开一个.js文件，并拷贝其中内容  
 * 在sandcaste页面左侧的“JavaScipt code”框中粘贴已复制的代码
 * 按下“Run(F8)“按钮查看效果
+## 许可协议
+[MIT](https://github.com/leerom/CesiumCustomMaterials/blob/main/LICENSE) @Leerom
