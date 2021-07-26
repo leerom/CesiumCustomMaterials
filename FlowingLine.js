@@ -1,6 +1,5 @@
 var viewer = new Cesium.Viewer('cesiumContainer');
 var scene = viewer.scene;
-var ellipsoid = scene.globe.ellipsoid;
 
 var matGLSL =
     'float SPEED_STEP = 0.01; \n' +
@@ -28,7 +27,7 @@ var matGLSL =
     'return m; \n' +
     '} \n';
 
-var redMat = new Cesium.Material({
+var myMat = new Cesium.Material({
     fabric: {
         type: 'FlowingLineMaterial',
         uniforms: {
@@ -44,23 +43,7 @@ var redMat = new Cesium.Material({
 
 });
 
-var greenMat = new Cesium.Material({
-    fabric: {
-        type: 'FlowingLineMaterial',
-        uniforms: {
-            color: new Cesium.Color(0.0, 1.0, 0.0, 1.0), // light color
-            speed: 0.8,                                  // flowing speed, speed > 0.0 
-            headsize: 0.05,                              // 0.0 < headsize < 1.0
-            tailsize: 0.5,                               // 0.0 < tailsize < 1.0
-            widthoffset: 0.1,                            // 0.0 < widthoffset < 1.0
-            coresize: 0.05                               // 0.0 < coresize < 1.0
-        },
-        source: matGLSL
-    }
-
-});
-
-var primitive1 = new Cesium.Primitive({
+var primitive = new Cesium.Primitive({
     geometryInstances: new Cesium.GeometryInstance({
         geometry: new Cesium.PolylineGeometry({
             positions: Cesium.Cartesian3.fromDegreesArray([0, 0, -45, 45, -90, 0]),
@@ -69,25 +52,10 @@ var primitive1 = new Cesium.Primitive({
         })
     }),
     appearance: new Cesium.PolylineMaterialAppearance({
-        material: redMat
+        material: myMat
     })
 });
 
-var primitive2 = new Cesium.Primitive({
-    geometryInstances: new Cesium.GeometryInstance({
-        geometry: new Cesium.PolylineGeometry({
-            positions: Cesium.Cartesian3.fromDegreesArray([0, 0, -90, 0]),
-            width: 20.0,
-            vertexFormat: Cesium.VertexFormat.ALL
-        })
-    }),
-    appearance: new Cesium.PolylineMaterialAppearance({
-        material: greenMat
-    })
-});
 
 // Add instances to primitives
-scene.primitives.add(primitive1);
-scene.primitives.add(primitive2);
-
-Sandcastle.finishedLoading();
+scene.primitives.add(primitive);
