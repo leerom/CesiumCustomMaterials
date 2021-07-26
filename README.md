@@ -3,6 +3,8 @@
 ## 效果演示
 * 流光线效果  
 ![流光线](https://github.com/leerom/CesiumCustomMaterials/blob/main/imgs/flowingLight.gif)  
+* 水波纹效果
+![流光线](https://github.com/leerom/CesiumCustomMaterials/blob/main/imgs/ripple.gif)  
 ## 使用说明  
 * 克隆或下载代码 
 * 打开Cesium的sandcastle测试页面，比如：https://sandcastle.cesium.com/   
